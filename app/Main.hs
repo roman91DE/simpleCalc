@@ -7,11 +7,12 @@ main = loop
   where
     loop :: IO ()
     loop = do
-      putStr "Enter Expression (:q to exit): "
+      putStrLn "Enter Expression (:q to exit): "
       input <- getLine
       if input == ":q"
         then putStrLn "Goodbye!"
         else do
-          let result = evalExpr $ parseExpr $ tokenize $ input
-          putStrLn $ "Result: " ++ result
+          case readExpr input >>= evalNode of
+            Just val -> putStrLn $ "Result: " ++ show val
+            Nothing -> putStrLn "Error: Invalid expression"
           loop

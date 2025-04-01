@@ -1,6 +1,7 @@
 module Evaluator where
 
 import Data.Char (isAlpha, isAlphaNum, isDigit, isSpace)
+import Text.Read (readMaybe)
 
 -- Expression AST
 data Expr
@@ -9,10 +10,11 @@ data Expr
   | Sub Expr Expr -- (- a b)
   | Mul Expr Expr -- (* a b)
   | Div Expr Expr -- (/ a b)
+
   deriving (Show, Eq)
 
 operatorSymbols :: [Char]
-operatorSymbols = "+-*/'"
+operatorSymbols = "+-*/"
 
 bracesSymbols :: [Char]
 bracesSymbols = "()"

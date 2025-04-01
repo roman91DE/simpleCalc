@@ -63,8 +63,8 @@ executable simpleCalc
     main-is:          Main.hs
     other-modules:    Evaluator
 
-    build-depends:    base ^>=4.18.2.1
-
+    build-depends: base >= 4.17 && < 4.19
+    
     hs-source-dirs:   app
 
     default-language: GHC2021
